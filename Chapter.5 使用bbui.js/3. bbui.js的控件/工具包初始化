@@ -6,7 +6,7 @@
 
 下面的代码就是最容易并且最简单的用bbUI初始化你的应用的方式。假定了你使用的是BlackBerry 10 WebWorks SDK 2.0中的cordova.js文件路径。通过加入这个文件的引用，就可以确定deviceready事件一定会触发。这样就确保了整个WebWorks框架在打开你的第一个页面的时候就已经被加载。
 
-更多的关于应用结构和跳转页面的内容可以再<a href="https://github.com/blackberry/bbUI.js/wiki/Application-Structure">这里</a>找到。
+更多的关于应用结构和跳转页面的内容可以在[这里](https://github.com/blackberry/bbUI.js/wiki/Application-Structure)找到。
 
 More information on application structure and pushing screens can be found here
 
