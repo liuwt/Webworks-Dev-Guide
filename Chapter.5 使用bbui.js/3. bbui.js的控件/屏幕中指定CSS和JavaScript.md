@@ -1,13 +1,14 @@
 屏幕中指定CSS和JavaScript
 -
 
-Each screen used in the application can have its own CSS and JavaScript files that will be loaded/unloaded dynamically when the screen is pushed and popped.
+在应用中使用到的每个屏幕都可以有属于自己的CSS和JavaScript文件，在屏幕被显示和销毁时进行动态加载和卸载。
 
-Loading CSS for your screen
+为你的屏幕加载CSS
+-
 
-If you have screen specific CSS that you would like to load with your screen, you can declare that CSS in one of two ways.
+如果你想要指定CSS同你的屏幕一起加载，，你可以用以下两种方式声明。
 
-First is by declaring it inline with your screen contents:
+第一种方法是在你的屏幕内容内部声明它：
 
     <div data-bb-type="screen">
         <style type="text/css">
@@ -17,33 +18,34 @@ First is by declaring it inline with your screen contents:
         </style>
     </div>
 
-An alternative is to declare a linked in style sheet within your screen's content. Just remember that the path to your style sheet will start from the main HTML page that you have loaded as the root of your application. So you should make your paths relative to that root document.
+另一种方法是在屏幕的stylesheet中声明一个链接（link）。要记住一点你的stylesheet中的路径会从你已经加载完毕的应用的根源也就是主HTML页面开始算起。所以你必须让你的路径是针对于根文档的一个相对路径。
 
     <div data-bb-type="screen">
         <link rel="stylesheet" type="text/css" href="css/tabs.css"></link>
     </div>
     
-To support the slide animation effects, screens in bbUI have their backgrounds set to "white" by default. Otherwise the screens would be transparent and show the content underneath them as they slide in. You must explicitly set the style of your screen if you want to set properties such as screen background.
+为了支持滑动动画特效，bbUI中的屏幕背景被默认设置为白色。否则屏幕会是透明的，并且当内容滑入的时候会显示在他们的下方。所以如果你想要设置诸如屏幕背景之类的属性，那么你必须对屏幕的样式理解的十分明确。
 
-Loading JavaScript for your screen
+为你的屏幕加载JavaScript
+-
 
-One of the more common scenarios is to have specific JavaScript files that you want to use for a certain screen. You really don't want to load up all of your screen's JavaScript on launch of your application, nor do you want to continue to use tons of memory to have your JavaScript objects sitting around while you're not using them.
+最普通的场景之一就是为某个屏幕指定一个你想要使用的JavaScript文件。你绝对不想要在启动应用时加载你所有屏幕的JavaScript，同样你也不想在你不使用JavaScript时，它们生成的对象却占用了大量的内存。
 
-bbUI allows you to declare JavaScript files to include with your screen. The toolkit will actually take care of including this JavaScript into your application when the screen is pushed onto the stack, and it will remove this JavaScript when the screen is popped back off of the stack. Just remember that the path to your JS file will start from the main HTML page that you have loaded as the root of your application. So you should make your paths relative to that root document.
+bbUI允许你声明JavaScript包含到你的屏幕。工具包会在屏幕被显示时负责将JavaScript文件包含到你的应用中，并且在屏幕被销毁时移除JavaScript文件。要记住一点你的JS文件的路径会从你已经加载完毕的应用的根源也就是主HTML页面开始算起。所以你必须让你的路径是针对于根文档的一个相对路径。
 
     <div data-bb-type="screen">
         <script src="js/tabs.js"></script>
     </div>
     
-This is accomplished by adding the <script> element into your DOM and the src path to the JavaScript file itself.
+这通过添加script元素到你的DOM，并且添加JavaScript文件的路径到script的属性src中来实现。
 
-If you have JavaScript that needs to perform some cleanup routines when your screen gets popped off of the stack, you can also declare JavaScript to be called before the screen is popped off of the stack using the onunload attribute.
+如果你有一些JavaScript来负责在屏幕销毁时执行一些日常的清理工作，你可以使用onunload属性来声明JavaScript，使其在屏幕销毁之前被调用。
 
     <div data-bb-type="screen">
         <script src="js/tabs.js" onunload="unloadPushListeners()"></script>
     </div>
 
-You can also use in-line script tags with your screen. The bbUI framework will load and unload these from scope when the screen is pushed or popped.
+你也可以在屏幕中使用内部script标签。bbUI框架将会一定范围内在屏幕显示和销毁时加载和卸载它们。
 
     <div data-bb-type="screen">
         <script type="text/javascript">
